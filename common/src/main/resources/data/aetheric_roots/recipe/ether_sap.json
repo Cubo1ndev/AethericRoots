@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smelting",
+  "category": "food",
+  "cookingtime": 200,
+  "experience": 0.35,
+  "ingredient": {
+    "item": "aetheric_roots:ether_leaves"
+  },
+  "result": {
+    "id": "aetheric_roots:ether_sap"
+  }
+}

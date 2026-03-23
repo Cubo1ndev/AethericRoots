@@ -1,0 +1,6 @@
+{
+    "parent": "minecraft:block/leaves",
+    "textures": {
+        "all": "aetheric_roots:block/ether_leaves"
+    }
+}

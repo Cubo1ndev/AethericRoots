@@ -1,0 +1,14 @@
+{
+  "block.aetheric_roots.empty_bonsai": "Empty Bonsai",
+  "block.aetheric_roots.bonsai": "Bonsai",
+  "block.aetheric_roots.frozen_bonsai": "Frozen Bonsai",
+  "block.aetheric_roots.ether_leaves": "Ether Leaves",
+  "item.aetheric_roots.empty_bonsai": "Empty Bonsai",
+  "item.aetheric_roots.bonsai": "Bonsai",
+  "item.aetheric_roots.frozen_bonsai": "Frozen Bonsai",
+  "item.aetheric_roots.ether_leaves": "Ether Leaves",
+  "item.aetheric_roots.ether_candle": "Ether Candle",
+  "item.aetheric_roots.ether_sap": "Ether Sap",
+  "item.aetheric_roots.ether_wax_ball": "Ether Wax Ball",
+  "itemGroup.aetheric_roots": "Aetheric Roots"
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "aetheric_roots:block/bonsai_stage_1",
+  "textures": {
+    "3": "block/cherry_leaves",
+    "particle": "block/cherry_leaves"
+  }
+}

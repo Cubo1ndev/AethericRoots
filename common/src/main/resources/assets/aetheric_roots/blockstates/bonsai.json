@@ -1,0 +1,83 @@
+{
+  "multipart": [
+    { "when": { "facing": "north", "growth_state": "1", "tree_type": "1" }, "apply": { "model": "aetheric_roots:block/oak_bonsai_stage_1" } },
+    { "when": { "facing": "east",  "growth_state": "1", "tree_type": "1" }, "apply": { "model": "aetheric_roots:block/oak_bonsai_stage_1", "y": 90 } },
+    { "when": { "facing": "south", "growth_state": "1", "tree_type": "1" }, "apply": { "model": "aetheric_roots:block/oak_bonsai_stage_1", "y": 180 } },
+    { "when": { "facing": "west",  "growth_state": "1", "tree_type": "1" }, "apply": { "model": "aetheric_roots:block/oak_bonsai_stage_1", "y": 270 } },
+
+    { "when": { "facing": "north", "growth_state": "1", "tree_type": "2" }, "apply": { "model": "aetheric_roots:block/spruce_bonsai_stage_1" } },
+    { "when": { "facing": "east",  "growth_state": "1", "tree_type": "2" }, "apply": { "model": "aetheric_roots:block/spruce_bonsai_stage_1", "y": 90 } },
+    { "when": { "facing": "south", "growth_state": "1", "tree_type": "2" }, "apply": { "model": "aetheric_roots:block/spruce_bonsai_stage_1", "y": 180 } },
+    { "when": { "facing": "west",  "growth_state": "1", "tree_type": "2" }, "apply": { "model": "aetheric_roots:block/spruce_bonsai_stage_1", "y": 270 } },
+
+    { "when": { "facing": "north", "growth_state": "1", "tree_type": "3" }, "apply": { "model": "aetheric_roots:block/birch_bonsai_stage_1" } },
+    { "when": { "facing": "east",  "growth_state": "1", "tree_type": "3" }, "apply": { "model": "aetheric_roots:block/birch_bonsai_stage_1", "y": 90 } },
+    { "when": { "facing": "south", "growth_state": "1", "tree_type": "3" }, "apply": { "model": "aetheric_roots:block/birch_bonsai_stage_1", "y": 180 } },
+    { "when": { "facing": "west",  "growth_state": "1", "tree_type": "3" }, "apply": { "model": "aetheric_roots:block/birch_bonsai_stage_1", "y": 270 } },
+
+    { "when": { "facing": "north", "growth_state": "1", "tree_type": "4" }, "apply": { "model": "aetheric_roots:block/jungle_bonsai_stage_1" } },
+    { "when": { "facing": "east",  "growth_state": "1", "tree_type": "4" }, "apply": { "model": "aetheric_roots:block/jungle_bonsai_stage_1", "y": 90 } },
+    { "when": { "facing": "south", "growth_state": "1", "tree_type": "4" }, "apply": { "model": "aetheric_roots:block/jungle_bonsai_stage_1", "y": 180 } },
+    { "when": { "facing": "west",  "growth_state": "1", "tree_type": "4" }, "apply": { "model": "aetheric_roots:block/jungle_bonsai_stage_1", "y": 270 } },
+
+    { "when": { "facing": "north", "growth_state": "1", "tree_type": "5" }, "apply": { "model": "aetheric_roots:block/acacia_bonsai_stage_1" } },
+    { "when": { "facing": "east",  "growth_state": "1", "tree_type": "5" }, "apply": { "model": "aetheric_roots:block/acacia_bonsai_stage_1", "y": 90 } },
+    { "when": { "facing": "south", "growth_state": "1", "tree_type": "5" }, "apply": { "model": "aetheric_roots:block/acacia_bonsai_stage_1", "y": 180 } },
+    { "when": { "facing": "west",  "growth_state": "1", "tree_type": "5" }, "apply": { "model": "aetheric_roots:block/acacia_bonsai_stage_1", "y": 270 } },
+
+    { "when": { "facing": "north", "growth_state": "1", "tree_type": "6" }, "apply": { "model": "aetheric_roots:block/dark_oak_bonsai_stage_1" } },
+    { "when": { "facing": "east",  "growth_state": "1", "tree_type": "6" }, "apply": { "model": "aetheric_roots:block/dark_oak_bonsai_stage_1", "y": 90 } },
+    { "when": { "facing": "south", "growth_state": "1", "tree_type": "6" }, "apply": { "model": "aetheric_roots:block/dark_oak_bonsai_stage_1", "y": 180 } },
+    { "when": { "facing": "west",  "growth_state": "1", "tree_type": "6" }, "apply": { "model": "aetheric_roots:block/dark_oak_bonsai_stage_1", "y": 270 } },
+
+    { "when": { "facing": "north", "growth_state": "1", "tree_type": "7" }, "apply": { "model": "aetheric_roots:block/cherry_bonsai_stage_1" } },
+    { "when": { "facing": "east",  "growth_state": "1", "tree_type": "7" }, "apply": { "model": "aetheric_roots:block/cherry_bonsai_stage_1", "y": 90 } },
+    { "when": { "facing": "south", "growth_state": "1", "tree_type": "7" }, "apply": { "model": "aetheric_roots:block/cherry_bonsai_stage_1", "y": 180 } },
+    { "when": { "facing": "west",  "growth_state": "1", "tree_type": "7" }, "apply": { "model": "aetheric_roots:block/cherry_bonsai_stage_1", "y": 270 } },
+
+    { "when": { "facing": "north", "growth_state": "1", "tree_type": "8" }, "apply": { "model": "aetheric_roots:block/mangrove_bonsai_stage_1" } },
+    { "when": { "facing": "east",  "growth_state": "1", "tree_type": "8" }, "apply": { "model": "aetheric_roots:block/mangrove_bonsai_stage_1", "y": 90 } },
+    { "when": { "facing": "south", "growth_state": "1", "tree_type": "8" }, "apply": { "model": "aetheric_roots:block/mangrove_bonsai_stage_1", "y": 180 } },
+    { "when": { "facing": "west",  "growth_state": "1", "tree_type": "8" }, "apply": { "model": "aetheric_roots:block/mangrove_bonsai_stage_1", "y": 270 } },
+
+    { "when": { "facing": "north", "growth_state": "2|3|4|5", "tree_type": "1" }, "apply": { "model": "aetheric_roots:block/oak_bonsai_stage_2" } },
+    { "when": { "facing": "east",  "growth_state": "2|3|4|5", "tree_type": "1" }, "apply": { "model": "aetheric_roots:block/oak_bonsai_stage_2", "y": 90 } },
+    { "when": { "facing": "south", "growth_state": "2|3|4|5", "tree_type": "1" }, "apply": { "model": "aetheric_roots:block/oak_bonsai_stage_2", "y": 180 } },
+    { "when": { "facing": "west",  "growth_state": "2|3|4|5", "tree_type": "1" }, "apply": { "model": "aetheric_roots:block/oak_bonsai_stage_2", "y": 270 } },
+
+    { "when": { "facing": "north", "growth_state": "2|3|4|5", "tree_type": "2" }, "apply": { "model": "aetheric_roots:block/spruce_bonsai_stage_2" } },
+    { "when": { "facing": "east",  "growth_state": "2|3|4|5", "tree_type": "2" }, "apply": { "model": "aetheric_roots:block/spruce_bonsai_stage_2", "y": 90 } },
+    { "when": { "facing": "south", "growth_state": "2|3|4|5", "tree_type": "2" }, "apply": { "model": "aetheric_roots:block/spruce_bonsai_stage_2", "y": 180 } },
+    { "when": { "facing": "west",  "growth_state": "2|3|4|5", "tree_type": "2" }, "apply": { "model": "aetheric_roots:block/spruce_bonsai_stage_2", "y": 270 } },
+
+    { "when": { "facing": "north", "growth_state": "2|3|4|5", "tree_type": "3" }, "apply": { "model": "aetheric_roots:block/birch_bonsai_stage_2" } },
+    { "when": { "facing": "east",  "growth_state": "2|3|4|5", "tree_type": "3" }, "apply": { "model": "aetheric_roots:block/birch_bonsai_stage_2", "y": 90 } },
+    { "when": { "facing": "south", "growth_state": "2|3|4|5", "tree_type": "3" }, "apply": { "model": "aetheric_roots:block/birch_bonsai_stage_2", "y": 180 } },
+    { "when": { "facing": "west",  "growth_state": "2|3|4|5", "tree_type": "3" }, "apply": { "model": "aetheric_roots:block/birch_bonsai_stage_2", "y": 270 } },
+
+    { "when": { "facing": "north", "growth_state": "2|3|4|5", "tree_type": "4" }, "apply": { "model": "aetheric_roots:block/jungle_bonsai_stage_2" } },
+    { "when": { "facing": "east",  "growth_state": "2|3|4|5", "tree_type": "4" }, "apply": { "model": "aetheric_roots:block/jungle_bonsai_stage_2", "y": 90 } },
+    { "when": { "facing": "south", "growth_state": "2|3|4|5", "tree_type": "4" }, "apply": { "model": "aetheric_roots:block/jungle_bonsai_stage_2", "y": 180 } },
+    { "when": { "facing": "west",  "growth_state": "2|3|4|5", "tree_type": "4" }, "apply": { "model": "aetheric_roots:block/jungle_bonsai_stage_2", "y": 270 } },
+
+    { "when": { "facing": "north", "growth_state": "2|3|4|5", "tree_type": "5" }, "apply": { "model": "aetheric_roots:block/acacia_bonsai_stage_2" } },
+    { "when": { "facing": "east",  "growth_state": "2|3|4|5", "tree_type": "5" }, "apply": { "model": "aetheric_roots:block/acacia_bonsai_stage_2", "y": 90 } },
+    { "when": { "facing": "south", "growth_state": "2|3|4|5", "tree_type": "5" }, "apply": { "model": "aetheric_roots:block/acacia_bonsai_stage_2", "y": 180 } },
+    { "when": { "facing": "west",  "growth_state": "2|3|4|5", "tree_type": "5" }, "apply": { "model": "aetheric_roots:block/acacia_bonsai_stage_2", "y": 270 } },
+
+    { "when": { "facing": "north", "growth_state": "2|3|4|5", "tree_type": "6" }, "apply": { "model": "aetheric_roots:block/dark_oak_bonsai_stage_2" } },
+    { "when": { "facing": "east",  "growth_state": "2|3|4|5", "tree_type": "6" }, "apply": { "model": "aetheric_roots:block/dark_oak_bonsai_stage_2", "y": 90 } },
+    { "when": { "facing": "south", "growth_state": "2|3|4|5", "tree_type": "6" }, "apply": { "model": "aetheric_roots:block/dark_oak_bonsai_stage_2", "y": 180 } },
+    { "when": { "facing": "west",  "growth_state": "2|3|4|5", "tree_type": "6" }, "apply": { "model": "aetheric_roots:block/dark_oak_bonsai_stage_2", "y": 270 } },
+
+    { "when": { "facing": "north", "growth_state": "2|3|4|5", "tree_type": "7" }, "apply": { "model": "aetheric_roots:block/cherry_bonsai_stage_2" } },
+    { "when": { "facing": "east",  "growth_state": "2|3|4|5", "tree_type": "7" }, "apply": { "model": "aetheric_roots:block/cherry_bonsai_stage_2", "y": 90 } },
+    { "when": { "facing": "south", "growth_state": "2|3|4|5", "tree_type": "7" }, "apply": { "model": "aetheric_roots:block/cherry_bonsai_stage_2", "y": 180 } },
+    { "when": { "facing": "west",  "growth_state": "2|3|4|5", "tree_type": "7" }, "apply": { "model": "aetheric_roots:block/cherry_bonsai_stage_2", "y": 270 } },
+
+    { "when": { "facing": "north", "growth_state": "2|3|4|5", "tree_type": "8" }, "apply": { "model": "aetheric_roots:block/mangrove_bonsai_stage_2" } },
+    { "when": { "facing": "east",  "growth_state": "2|3|4|5", "tree_type": "8" }, "apply": { "model": "aetheric_roots:block/mangrove_bonsai_stage_2", "y": 90 } },
+    { "when": { "facing": "south", "growth_state": "2|3|4|5", "tree_type": "8" }, "apply": { "model": "aetheric_roots:block/mangrove_bonsai_stage_2", "y": 180 } },
+    { "when": { "facing": "west",  "growth_state": "2|3|4|5", "tree_type": "8" }, "apply": { "model": "aetheric_roots:block/mangrove_bonsai_stage_2", "y": 270 } }
+  ]
+}

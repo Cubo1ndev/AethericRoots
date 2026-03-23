@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "Q": {
+      "item": "minecraft:quartz"
+    },
+    "A": {
+      "item": "minecraft:amethyst_shard"
+    }
+  },
+  "pattern": [
+    "   ",
+    "QAQ",
+    "QQQ"
+  ],
+  "result": {
+    "count": 1,
+    "id": "aetheric_roots:empty_bonsai"
+  }
+}

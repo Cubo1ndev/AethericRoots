@@ -1,0 +1,29 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_ether_wax_ball": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "aetheric_roots:ether_wax_ball"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "aetheric_roots:ether_candle"
+      }
+    }
+  },
+  "requirements": [
+    ["has_ether_wax_ball", "has_the_recipe"]
+  ],
+  "rewards": {
+    "recipes": [
+      "aetheric_roots:ether_candle"
+    ]
+  }
+}

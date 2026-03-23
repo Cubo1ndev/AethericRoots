@@ -1,0 +1,32 @@
+# --- Gradle & Build Outputs ---
+.gradle/
+build/
+bin/
+**/build/
+**/bin/
+**/.gradle/
+
+# --- Minecraft / Loom Run Directories ---
+# This ignores the game data (saves, logs, configs) in all modules
+run/
+**/run/
+/runConfigs/
+
+# --- IDE Specific ---
+.vscode/
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+**/out/
+
+# --- Architectury / Fabric Specific ---
+.architectury/
+architectury-transformer-cache/
+local.properties
+
+# --- OS Junk ---
+.claude/
+.DS_Store
+Thumbs.db

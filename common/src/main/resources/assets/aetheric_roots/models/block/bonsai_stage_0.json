@@ -1,0 +1,95 @@
+{
+	"format_version": "1.9.0",
+	"credit": "Made with Blockbench",
+	"render_type": "minecraft:cutout",
+	"textures": {
+		"4": "block/white_concrete",
+		"5": "block/dirt",
+		"particle": "block/white_concrete"
+	},
+	"elements": [
+		{
+			"name": "Base",
+			"from": [3, 0, 5],
+			"to": [13, 3, 11],
+			"rotation": {"angle": 0, "axis": "y", "origin": [4, 2, 6]},
+			"faces": {
+				"north": {"uv": [1, 12, 11, 15], "texture": "#4"},
+				"east": {"uv": [10, 6, 16, 9], "texture": "#4"},
+				"south": {"uv": [1, 5, 11, 8], "texture": "#4"},
+				"west": {"uv": [0, 6, 6, 9], "texture": "#4"},
+				"up": {"uv": [0, 5, 10, 11], "texture": "#4"},
+				"down": {"uv": [1, 6, 11, 12], "texture": "#4"}
+			}
+		},
+		{
+			"name": "Walls",
+			"from": [2, 1.75, 4],
+			"to": [14, 4.5, 12],
+			"rotation": {"angle": 0, "axis": "y", "origin": [4, 3.5, 6]},
+			"faces": {
+				"north": {"uv": [1, 13, 13, 15.75], "texture": "#4"},
+				"east": {"uv": [0, 6, 8, 8.75], "texture": "#4"},
+				"south": {"uv": [1, 5, 13, 7.75], "texture": "#4"},
+				"west": {"uv": [8, 6, 16, 8.75], "texture": "#4"},
+				"up": {"uv": [1, 6, 13, 14], "texture": "#4"},
+				"down": {"uv": [1, 6, 13, 14], "texture": "#4"}
+			}
+		},
+		{
+			"name": "Dirt",
+			"from": [3, 4.5, 5],
+			"to": [13, 4.6, 11],
+			"rotation": {"angle": 0, "axis": "y", "origin": [4, 3.75, 6]},
+			"faces": {
+				"north": {"uv": [1, 5, 11, 5.1], "texture": "#5"},
+				"east": {"uv": [0, 6, 6, 6.1], "texture": "#5"},
+				"south": {"uv": [1, 12, 11, 12.1], "texture": "#5"},
+				"west": {"uv": [10, 6, 16, 6.1], "texture": "#5"},
+				"up": {"uv": [1, 6, 11, 12], "texture": "#5"},
+				"down": {"uv": [1, 6, 11, 12], "texture": "#5"}
+			}
+		}
+	],
+	"display": {
+		"thirdperson_righthand": {
+			"translation": [0, 1.75, 0],
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"thirdperson_lefthand": {
+			"translation": [0, 1.75, 0],
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"firstperson_righthand": {
+			"translation": [0, 6, 0]
+		},
+		"firstperson_lefthand": {
+			"translation": [0, 6, 0]
+		},
+		"ground": {
+			"translation": [0, 2, 0],
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"gui": {
+			"rotation": [22.5, 45, 22.5],
+			"translation": [-0.75, 2.75, 0],
+			"scale": [0.75, 0.75, 0.75]
+		},
+		"head": {
+			"translation": [0, 18.5, 0],
+			"scale": [1.5, 1.5, 1.5]
+		},
+		"fixed": {
+			"translation": [0, 5.5, 0]
+		}
+	},
+	"groups": [
+		{
+			"name": "Base",
+			"origin": [4, 0, 6],
+			"color": 0,
+			"children": [0, 1]
+		},
+		2
+	]
+}

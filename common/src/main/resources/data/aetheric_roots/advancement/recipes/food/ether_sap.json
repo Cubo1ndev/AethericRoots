@@ -1,0 +1,29 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_ether_leaves": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "aetheric_roots:ether_leaves"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "aetheric_roots:ether_sap"
+      }
+    }
+  },
+  "requirements": [
+    ["has_ether_leaves", "has_the_recipe"]
+  ],
+  "rewards": {
+    "recipes": [
+      "aetheric_roots:ether_sap"
+    ]
+  }
+}

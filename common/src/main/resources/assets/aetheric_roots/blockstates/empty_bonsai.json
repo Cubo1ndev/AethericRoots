@@ -1,0 +1,8 @@
+{
+  "multipart": [
+    { "when": { "facing": "north" }, "apply": { "model": "aetheric_roots:block/bonsai_stage_0" } },
+    { "when": { "facing": "east" },  "apply": { "model": "aetheric_roots:block/bonsai_stage_0", "y": 90 } },
+    { "when": { "facing": "south" }, "apply": { "model": "aetheric_roots:block/bonsai_stage_0", "y": 180 } },
+    { "when": { "facing": "west" },  "apply": { "model": "aetheric_roots:block/bonsai_stage_0", "y": 270 } }
+  ]
+}

@@ -1,0 +1,125 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "aetheric_roots:empty_bonsai"
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ]
+    },
+    {
+      "rolls": { "min": 1, "max": 2 },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "aetheric_roots:ether_leaves"
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:block_state_property",
+          "block": "aetheric_roots:bonsai",
+          "properties": { "growth_state": "4" }
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "aetheric_roots:ether_candle",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": 1,
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "aetheric_roots:bonsai",
+                  "properties": { "candles": "1" }
+                }
+              ]
+            },
+            {
+              "function": "minecraft:set_count",
+              "count": 2,
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "aetheric_roots:bonsai",
+                  "properties": { "candles": "2" }
+                }
+              ]
+            },
+            {
+              "function": "minecraft:set_count",
+              "count": 3,
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "aetheric_roots:bonsai",
+                  "properties": { "candles": "3" }
+                }
+              ]
+            },
+            {
+              "function": "minecraft:set_count",
+              "count": 4,
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "aetheric_roots:bonsai",
+                  "properties": { "candles": "4" }
+                }
+              ]
+            },
+            {
+              "function": "minecraft:set_count",
+              "count": 5,
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "aetheric_roots:bonsai",
+                  "properties": { "candles": "5" }
+                }
+              ]
+            },
+            {
+              "function": "minecraft:set_count",
+              "count": 6,
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "aetheric_roots:bonsai",
+                  "properties": { "candles": "6" }
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        },
+        {
+          "condition": "minecraft:inverted",
+          "term": {
+            "condition": "minecraft:block_state_property",
+            "block": "aetheric_roots:bonsai",
+            "properties": { "candles": "0" }
+          }
+        }
+      ]
+    }
+  ]
+}
