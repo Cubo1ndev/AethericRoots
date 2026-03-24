@@ -116,9 +116,7 @@ public class BonsaiBlock extends BaseEntityBlock implements WorldlyContainerHold
     @Override
     public ItemStack getCloneItemStack(LevelReader levelReader, BlockPos blockPos, BlockState blockState) {
         ItemStack stack = super.getCloneItemStack(levelReader, blockPos, blockState);
-        stack.set(DataComponents.BLOCK_STATE, BlockItemStateProperties.EMPTY.with(TREE_TYPE, blockState));
-        stack.set(DataComponents.BLOCK_STATE, BlockItemStateProperties.EMPTY.with(GROWTH_STATE, blockState));
-        stack.set(DataComponents.BLOCK_STATE, BlockItemStateProperties.EMPTY.with(CANDLES, blockState));
+        stack.set(DataComponents.BLOCK_STATE, BlockItemStateProperties.EMPTY.with(TREE_TYPE, blockState).with(GROWTH_STATE, blockState).with(CANDLES, blockState));
         return stack;
     }
 
