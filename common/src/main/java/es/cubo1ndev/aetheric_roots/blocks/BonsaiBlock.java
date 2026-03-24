@@ -11,6 +11,7 @@ import es.cubo1ndev.aetheric_roots.bonsai.tree.type.BonsaiTreeType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Direction.Axis;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.Registries;
@@ -31,12 +32,14 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.component.BlockItemStateProperties;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.Level.ExplosionInteraction;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.RenderShape;
@@ -108,6 +111,15 @@ public class BonsaiBlock extends BaseEntityBlock implements WorldlyContainerHold
             BlockEntityType<U> toCheckBlockEntityType) {
         return createTickerHelper(toCheckBlockEntityType, ExampleMod.BONSAI_BLOCK_ENTITY.get(),
                 (lvl, pos, state, entity) -> entity.tick(lvl, pos, state, entity));
+    }
+
+    @Override
+    public ItemStack getCloneItemStack(LevelReader levelReader, BlockPos blockPos, BlockState blockState) {
+        ItemStack stack = super.getCloneItemStack(levelReader, blockPos, blockState);
+        stack.set(DataComponents.BLOCK_STATE, BlockItemStateProperties.EMPTY.with(TREE_TYPE, blockState));
+        stack.set(DataComponents.BLOCK_STATE, BlockItemStateProperties.EMPTY.with(GROWTH_STATE, blockState));
+        stack.set(DataComponents.BLOCK_STATE, BlockItemStateProperties.EMPTY.with(CANDLES, blockState));
+        return stack;
     }
 
     @Override

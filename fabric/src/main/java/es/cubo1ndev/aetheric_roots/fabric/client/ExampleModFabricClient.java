@@ -4,15 +4,14 @@ import es.cubo1ndev.aetheric_roots.ExampleMod;
 import es.cubo1ndev.aetheric_roots.blocks.BonsaiBlock;
 import es.cubo1ndev.aetheric_roots.blocks.BonsaiRenderer;
 import es.cubo1ndev.aetheric_roots.blocks.FrozenBonsaiBlock;
+import es.cubo1ndev.aetheric_roots.client.ModItemProperties;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
-import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.core.component.DataComponents;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.component.BlockItemStateProperties;
 import net.minecraft.world.level.FoliageColor;
 import net.minecraft.world.level.block.state.BlockState;
@@ -34,15 +33,37 @@ public final class ExampleModFabricClient implements ClientModInitializer {
                 getFoliageColor(state, FrozenBonsaiBlock.TREE_TYPE, blockAndTintGetter, pos, tintIndex),
                 ExampleMod.FROZEN_BONSAI_BLOCK.get());
 
-        ItemProperties.register(ExampleMod.FROZEN_BONSAI_ITEM.get(),
-                ResourceLocation.fromNamespaceAndPath(ExampleMod.MOD_ID, "tree_type"),
-                (stack, level, entity, seed) -> {
+        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> {
+                    if (tintIndex != 0) return -1;
+                    BlockItemStateProperties props = stack.getOrDefault(
+                            DataComponents.BLOCK_STATE, BlockItemStateProperties.EMPTY);
+                    BlockState state = props.apply(
+                            ExampleMod.BONSAI_BLOCK.get().defaultBlockState());
+                    return getItemFoliageColor(state.getValue(BonsaiBlock.TREE_TYPE));
+                },
+                ExampleMod.BONSAI_ITEM.get());
+
+        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> {
+                    if (tintIndex != 0) return -1;
                     BlockItemStateProperties props = stack.getOrDefault(
                             DataComponents.BLOCK_STATE, BlockItemStateProperties.EMPTY);
                     BlockState state = props.apply(
                             ExampleMod.FROZEN_BONSAI_BLOCK.get().defaultBlockState());
-                    return state.getValue(FrozenBonsaiBlock.TREE_TYPE);
-                });
+                    return getItemFoliageColor(state.getValue(FrozenBonsaiBlock.TREE_TYPE));
+                },
+                ExampleMod.FROZEN_BONSAI_ITEM.get());
+
+        ModItemProperties.register();
+    }
+
+    private static int getItemFoliageColor(int treeType) {
+        return switch (treeType) {
+            case 2 -> FoliageColor.getEvergreenColor();   // spruce
+            case 3 -> FoliageColor.getBirchColor();       // birch
+            case 7 -> -1;                                 // cherry (no tint)
+            case 1, 4, 5, 6, 8 -> FoliageColor.getDefaultColor(); // oak, jungle, acacia, dark_oak, mangrove
+            default -> -1;
+        };
     }
 
     private static int getFoliageColor(BlockState state, IntegerProperty treeTypeProp,

@@ -18,6 +18,7 @@ import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LightLayer;
 import net.minecraft.world.level.block.BonemealableBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.Heightmap.Types;
@@ -170,7 +171,14 @@ public final class BonsaiTreeBehaviors {
         if (candleCount == 0)
             return;
 
-        if (level.random.nextInt(96 / candleCount) != 0)
+        if (level.random.nextInt(960 / candleCount) != 0)
+            return;
+
+        /*
+        1 candle => b < 1
+        6 candles => b < 6
+        */
+        if (level.getBrightness(LightLayer.BLOCK, blockPos) < candleCount) 
             return;
 
         ExperienceOrb.award((ServerLevel) level, blockPos.getCenter(), candleCount);
