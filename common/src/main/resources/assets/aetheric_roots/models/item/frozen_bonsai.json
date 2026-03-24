@@ -1,3 +1,13 @@
 {
-  "parent": "aetheric_roots:block/bonsai_stage_2"
+  "parent": "aetheric_roots:block/oak_bonsai_stage_2",
+  "overrides": [
+    { "predicate": { "aetheric_roots:tree_type": 1 }, "model": "aetheric_roots:block/oak_bonsai_stage_2" },
+    { "predicate": { "aetheric_roots:tree_type": 2 }, "model": "aetheric_roots:block/spruce_bonsai_stage_2" },
+    { "predicate": { "aetheric_roots:tree_type": 3 }, "model": "aetheric_roots:block/birch_bonsai_stage_2" },
+    { "predicate": { "aetheric_roots:tree_type": 4 }, "model": "aetheric_roots:block/jungle_bonsai_stage_2" },
+    { "predicate": { "aetheric_roots:tree_type": 5 }, "model": "aetheric_roots:block/acacia_bonsai_stage_2" },
+    { "predicate": { "aetheric_roots:tree_type": 6 }, "model": "aetheric_roots:block/dark_oak_bonsai_stage_2" },
+    { "predicate": { "aetheric_roots:tree_type": 7 }, "model": "aetheric_roots:block/cherry_bonsai_stage_2" },
+    { "predicate": { "aetheric_roots:tree_type": 8 }, "model": "aetheric_roots:block/mangrove_bonsai_stage_2" }
+  ]
 }

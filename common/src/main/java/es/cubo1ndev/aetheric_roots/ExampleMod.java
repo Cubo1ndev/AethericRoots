@@ -7,17 +7,21 @@ import es.cubo1ndev.aetheric_roots.blocks.BonsaiBlock;
 import es.cubo1ndev.aetheric_roots.blocks.BonsaiBlockEntity;
 import es.cubo1ndev.aetheric_roots.blocks.EmptyBonsaiBlock;
 import es.cubo1ndev.aetheric_roots.blocks.FrozenBonsaiBlock;
+import es.cubo1ndev.aetheric_roots.bonsai.tree.type.BonsaiTreeType;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.component.BlockItemStateProperties;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 
@@ -42,7 +46,8 @@ public final class ExampleMod {
                                         .sound(SoundType.STONE).noOcclusion()
                                         .lightLevel(blockState -> {
                                                 int candleLight = blockState.getValue(BonsaiBlock.CANDLES) > 0 ? 12 : 0;
-                                                int growthLight = switch (blockState.getValue(BonsaiBlock.GROWTH_STATE)) {
+                                                int growthLight = switch (blockState
+                                                                .getValue(BonsaiBlock.GROWTH_STATE)) {
                                                         case 1, 2 -> 0;
                                                         case 3 -> 10;
                                                         case 4 -> 15;
@@ -97,12 +102,22 @@ public final class ExampleMod {
                                 builder.icon(() -> new ItemStack(ETHER_CANDLE_ITEM.get()));
                                 builder.displayItems((parameters, output) -> {
                                         output.accept(EMPTY_BONSAI_ITEM.get());
-                                        output.accept(FROZEN_BONSAI_ITEM.get());
+                                        for (int i = 1; i <= BonsaiTreeType.COUNT; i++) {
+                                                BlockState state = FROZEN_BONSAI_BLOCK.get().defaultBlockState()
+                                                                .setValue(FrozenBonsaiBlock.TREE_TYPE, i);
+                                                ItemStack stack = new ItemStack(FROZEN_BONSAI_ITEM.get());
+                                                stack.set(DataComponents.BLOCK_STATE,
+                                                                BlockItemStateProperties.EMPTY
+                                                                                .with(FrozenBonsaiBlock.TREE_TYPE,
+                                                                                                state));
+                                                output.accept(stack);
+                                        }
                                         output.accept(ETHER_LEAVES_ITEM.get());
                                         output.accept(ETHER_SAP_ITEM.get());
                                         output.accept(ETHER_WAX_BALL_ITEM.get());
                                         output.accept(ETHER_CANDLE_ITEM.get());
                                 });
+
                         }));
 
         public static void init() {

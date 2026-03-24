@@ -10,6 +10,10 @@ import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
+import net.minecraft.client.renderer.item.ItemProperties;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.component.BlockItemStateProperties;
 import net.minecraft.world.level.FoliageColor;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
@@ -29,6 +33,16 @@ public final class ExampleModFabricClient implements ClientModInitializer {
         ColorProviderRegistry.BLOCK.register((state, blockAndTintGetter, pos, tintIndex) ->
                 getFoliageColor(state, FrozenBonsaiBlock.TREE_TYPE, blockAndTintGetter, pos, tintIndex),
                 ExampleMod.FROZEN_BONSAI_BLOCK.get());
+
+        ItemProperties.register(ExampleMod.FROZEN_BONSAI_ITEM.get(),
+                ResourceLocation.fromNamespaceAndPath(ExampleMod.MOD_ID, "tree_type"),
+                (stack, level, entity, seed) -> {
+                    BlockItemStateProperties props = stack.getOrDefault(
+                            DataComponents.BLOCK_STATE, BlockItemStateProperties.EMPTY);
+                    BlockState state = props.apply(
+                            ExampleMod.FROZEN_BONSAI_BLOCK.get().defaultBlockState());
+                    return state.getValue(FrozenBonsaiBlock.TREE_TYPE);
+                });
     }
 
     private static int getFoliageColor(BlockState state, IntegerProperty treeTypeProp,
