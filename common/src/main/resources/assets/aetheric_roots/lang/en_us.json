@@ -14,5 +14,7 @@
   "item.aetheric_roots.thorned_vine": "Thorned Vine",
   "death.attack.thorned_vine": "%1$s was pricked to death",
   "death.attack.thorned_vine.player": "%1$s was pricked to death whilst trying to escape %2$s",
-  "itemGroup.aetheric_roots": "Aetheric Roots"
+  "itemGroup.aetheric_roots": "Aetheric Roots",
+  "aetheric_roots.bonsai.desc.growth_state": "Growth state: %d",
+  "aetheric_roots.bonsai.desc.candles": "Candles: %d"
 }

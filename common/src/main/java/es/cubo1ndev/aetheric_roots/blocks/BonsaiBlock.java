@@ -9,6 +9,7 @@ import com.mojang.serialization.MapCodec;
 import es.cubo1ndev.aetheric_roots.ExampleMod;
 import es.cubo1ndev.aetheric_roots.bonsai.tree.type.BonsaiTreeBehaviors;
 import es.cubo1ndev.aetheric_roots.bonsai.tree.type.BonsaiTreeType;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Direction.Axis;
@@ -16,6 +17,8 @@ import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
@@ -31,8 +34,10 @@ import net.minecraft.world.WorldlyContainerHolder;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.BlockItemStateProperties;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
@@ -355,6 +360,23 @@ public class BonsaiBlock extends BaseEntityBlock implements WorldlyContainerHold
             }
         }
         return super.playerWillDestroy(level, blockPos, blockState, player);
+    }
+
+    @Override
+    public void appendHoverText(ItemStack itemStack, Item.TooltipContext tooltipContext, List<Component> list,
+            TooltipFlag tooltipFlag) {
+        super.appendHoverText(itemStack, tooltipContext, list, tooltipFlag);
+
+        int treeType = itemStack.get(DataComponents.BLOCK_STATE).get(TREE_TYPE);
+        MutableComponent nameComponent = (MutableComponent) BonsaiTreeType.getById(treeType).getSapling().getName(itemStack);
+        int growthState = itemStack.get(DataComponents.BLOCK_STATE).get(GROWTH_STATE);
+        MutableComponent growthStateComponent = Component.translatable("aetheric_roots.bonsai.desc.growth_state", growthState);
+        int candles = itemStack.get(DataComponents.BLOCK_STATE).get(CANDLES);
+        MutableComponent candlesComponent = Component.translatable("aetheric_roots.bonsai.desc.candles", candles);
+
+        list.add(nameComponent.withStyle(ChatFormatting.YELLOW));
+        list.add(growthStateComponent.withStyle(ChatFormatting.GRAY));
+        list.add(candlesComponent.withStyle(ChatFormatting.WHITE));
     }
 
     public static BlockState decreaseGrowth(@Nullable Entity entity, BlockState blockState, LevelAccessor levelAccessor,
