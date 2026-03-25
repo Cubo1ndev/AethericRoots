@@ -11,12 +11,18 @@ import es.cubo1ndev.aetheric_roots.bonsai.tree.type.BonsaiTreeType;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.DamageType;
 import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.BlockItemStateProperties;
 import net.minecraft.world.level.block.Block;
+import es.cubo1ndev.aetheric_roots.blocks.ThornedVine;
 import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -34,6 +40,8 @@ public final class ExampleMod {
                         Registries.CREATIVE_MODE_TAB);
         public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(MOD_ID,
                         Registries.BLOCK_ENTITY_TYPE);
+        public static final ResourceKey<DamageType> THORNED_VINE_DAMAGE = ResourceKey.create(Registries.DAMAGE_TYPE,
+                        ResourceLocation.fromNamespaceAndPath(MOD_ID, "thorned_vine"));
 
         public static final RegistrySupplier<Block> EMPTY_BONSAI_BLOCK = BLOCKS.register("empty_bonsai",
                         () -> new EmptyBonsaiBlock(BlockBehaviour.Properties.of()
@@ -71,6 +79,10 @@ public final class ExampleMod {
                                         .pushReaction(PushReaction.DESTROY)
                                         .isRedstoneConductor((_1, _2, _3) -> false)));
 
+        public static final RegistrySupplier<Block> THORNED_VINE_BLOCK = BLOCKS.register("thorned_vine",
+                        () -> new ThornedVine(BlockBehaviour.Properties.of()
+                                        .mapColor(MapColor.PLANT).replaceable().noCollission().strength(0.2F).sound(SoundType.GLOW_LICHEN).ignitedByLava().pushReaction(PushReaction.DESTROY)));
+
         public static final RegistrySupplier<BlockEntityType<BonsaiBlockEntity>> BONSAI_BLOCK_ENTITY = BLOCK_ENTITIES
                         .register("bonsai", () -> BlockEntityType.Builder
                                         .of(BonsaiBlockEntity::new, BONSAI_BLOCK.get()).build(null));
@@ -86,6 +98,9 @@ public final class ExampleMod {
 
         public static final RegistrySupplier<Item> ETHER_LEAVES_ITEM = ITEMS.register("ether_leaves",
                         () -> new BlockItem(ETHER_LEAVES_BLOCK.get(), new Item.Properties()));
+
+        public static final RegistrySupplier<Item> THORNED_VINE_ITEM = ITEMS.register("thorned_vine",
+                        () -> new BlockItem(THORNED_VINE_BLOCK.get(), new Item.Properties()));
 
         public static final RegistrySupplier<Item> ETHER_CANDLE_ITEM = ITEMS.register("ether_candle",
                         () -> new Item(new Item.Properties()));
@@ -116,9 +131,14 @@ public final class ExampleMod {
                                         output.accept(ETHER_SAP_ITEM.get());
                                         output.accept(ETHER_WAX_BALL_ITEM.get());
                                         output.accept(ETHER_CANDLE_ITEM.get());
+                                        output.accept(THORNED_VINE_ITEM.get());
                                 });
 
                         }));
+
+        public static DamageSource thornedVineDamage(Level level) {
+                return new DamageSource(level.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(THORNED_VINE_DAMAGE));
+        }
 
         public static void init() {
                 BLOCKS.register();

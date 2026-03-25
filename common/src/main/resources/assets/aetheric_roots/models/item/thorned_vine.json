@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "aetheric_roots:block/thorned_vine",
+    "layer1": "aetheric_roots:block/thorned_vine_flower_overlay"
+  }
+}

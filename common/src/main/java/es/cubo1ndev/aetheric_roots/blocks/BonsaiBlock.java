@@ -7,6 +7,7 @@ import org.jetbrains.annotations.Nullable;
 import com.mojang.serialization.MapCodec;
 
 import es.cubo1ndev.aetheric_roots.ExampleMod;
+import es.cubo1ndev.aetheric_roots.bonsai.tree.type.BonsaiTreeBehaviors;
 import es.cubo1ndev.aetheric_roots.bonsai.tree.type.BonsaiTreeType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -296,8 +297,9 @@ public class BonsaiBlock extends BaseEntityBlock implements WorldlyContainerHold
         int currentGrowth = blockState.getValue(GROWTH_STATE);
 
         int candles = blockState.getValue(CANDLES) + 1;
-        if ((currentGrowth <= 2 && randomSource.nextInt(10) == 0)
-                || (currentGrowth > 2 && randomSource.nextInt(20 * candles) == 0)) {
+        int slowMultiplier = getSlowGrowMultiplier(serverLevel, blockPos);
+        if ((currentGrowth <= 2 && randomSource.nextInt(10 * slowMultiplier) == 0)
+                || (currentGrowth > 2 && randomSource.nextInt(20 * candles * slowMultiplier) == 0)) {
             if (currentGrowth == 5) {
                 serverLevel.explode(null, Explosion.getDefaultDamageSource(serverLevel, null), null, blockPos.getX(),
                         blockPos.getY() + 0.0625F, blockPos.getZ(), 4.0F, false, ExplosionInteraction.TRIGGER);
@@ -307,6 +309,24 @@ public class BonsaiBlock extends BaseEntityBlock implements WorldlyContainerHold
             int nextLevel = Math.min(5, currentGrowth + 1);
             serverLevel.setBlock(blockPos, blockState.setValue(GROWTH_STATE, nextLevel), 3);
         }
+    }
+
+    private int getSlowGrowMultiplier(ServerLevel level, BlockPos blockPos) {
+        int multiplier = 1;
+        int radius = 8;
+        for (BlockPos nearby : BlockPos.betweenClosed(blockPos.offset(-radius, -radius, -radius),
+                blockPos.offset(radius, radius, radius))) {
+            if (nearby.equals(blockPos))
+                continue;
+            BlockState nearbyState = level.getBlockState(nearby);
+            if (nearbyState.is(this) && nearbyState.getValue(GROWTH_STATE) >= 3) {
+                BonsaiTreeType type = BonsaiTreeType.getById(nearbyState.getValue(TREE_TYPE));
+                if (type != null && type.getBehavior() == BonsaiTreeBehaviors.SLOWER_BONSAI_GROW) {
+                    multiplier += nearbyState.getValue(CANDLES) + 1;
+                }
+            }
+        }
+        return multiplier;
     }
 
     @Override

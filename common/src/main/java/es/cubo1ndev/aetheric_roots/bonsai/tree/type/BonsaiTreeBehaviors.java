@@ -5,8 +5,10 @@ import java.util.List;
 
 import org.jetbrains.annotations.Nullable;
 
+import es.cubo1ndev.aetheric_roots.ExampleMod;
 import es.cubo1ndev.aetheric_roots.blocks.BonsaiBlock;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.effect.MobEffect;
@@ -20,6 +22,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LightLayer;
 import net.minecraft.world.level.block.BonemealableBlock;
+import net.minecraft.world.level.block.MultifaceBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.Heightmap.Types;
 import net.minecraft.world.phys.AABB;
@@ -28,8 +31,8 @@ import net.minecraft.core.particles.ParticleTypes;
 
 public final class BonsaiTreeBehaviors {
     private static final List<List<Holder<MobEffect>>> MOB_EFFECTS_PURIFICATOR = new ArrayList<>();
-
-    public static final BonsaiTreeBehavior EMPTY = (level, blockPos, blockState, entity) -> {
+    
+    public static final BonsaiTreeBehavior SLOWER_BONSAI_GROW = (level, blockPos, blockState, entity) -> {
     };
 
     public static final BonsaiTreeBehavior CROP = (level, blockPos, blockState, entity) -> {
@@ -205,6 +208,36 @@ public final class BonsaiTreeBehaviors {
         }
     };
 
+    
+
+    public static final BonsaiTreeBehavior THORN_AURA = (level, blockPos, blockState, entity) -> {
+        if (level.isClientSide)
+            return;
+
+        if (blockState.getValue(BonsaiBlock.GROWTH_STATE) < 3)
+            return;
+
+        int candleCount = blockState.getValue(BonsaiBlock.CANDLES);
+        if (candleCount == 0)
+            return;
+
+        if (level.random.nextInt(12 / candleCount) != 0)
+            return;
+
+        // Random walk from the bonsai to find a placement spot, sculk-style
+        // More candles = longer search = further spread
+        int maxSteps = 4 + candleCount * 3;
+        BlockPos cursor = blockPos;
+
+        for (int step = 0; step < maxSteps; step++) {
+            Direction walkDir = Direction.getRandom(level.random);
+            cursor = cursor.relative(walkDir);
+
+            if (tryPlaceVine(level, cursor))
+                return;
+        }
+    };
+
     @Nullable
     private static Monster findLightningTargetAround(ServerLevel level, BlockPos blockPos, int multiplier) {
         BlockPos blockPos2 = level.getHeightmapPos(Types.MOTION_BLOCKING, blockPos);
@@ -238,15 +271,31 @@ public final class BonsaiTreeBehaviors {
         BonsaiBlock.decreaseCandles(null, blockState, level, blockPos);
     }
 
-    private BonsaiTreeBehaviors() {
+    private static boolean tryPlaceVine(Level level, BlockPos pos) {
+        if (!level.getBlockState(pos).isAir())
+            return false;
+
+        BlockState vineDefault = ExampleMod.THORNED_VINE_BLOCK.get().defaultBlockState();
+        for (Direction face : Direction.values()) {
+            BlockPos neighbor = pos.relative(face);
+            if (level.getBlockState(neighbor).isFaceSturdy(level, neighbor, face)) {
+                BlockState placed = vineDefault.setValue(MultifaceBlock.getFaceProperty(face), true);
+                level.setBlockAndUpdate(pos, placed);
+                ((ServerLevel) level).sendParticles(ParticleTypes.HAPPY_VILLAGER,
+                        pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5,
+                        5, 0.2, 0.2, 0.2, 0.05);
+                return true;
+            }
+        }
+        return false;
     }
 
     static {
-        MOB_EFFECTS_PURIFICATOR.add(List.of(MobEffects.HUNGER, MobEffects.POISON));
-        MOB_EFFECTS_PURIFICATOR.add(List.of(MobEffects.DARKNESS, MobEffects.BLINDNESS, MobEffects.CONFUSION));
-        MOB_EFFECTS_PURIFICATOR.add(List.of(MobEffects.WEAKNESS, MobEffects.MOVEMENT_SLOWDOWN));
-        MOB_EFFECTS_PURIFICATOR.add(List.of(MobEffects.WITHER, MobEffects.DIG_SLOWDOWN));
-        MOB_EFFECTS_PURIFICATOR.add(List.of(MobEffects.LEVITATION));
-        MOB_EFFECTS_PURIFICATOR.add(List.of(MobEffects.BAD_OMEN, MobEffects.RAID_OMEN, MobEffects.TRIAL_OMEN));
+        /* 1 candle  */ MOB_EFFECTS_PURIFICATOR.add(List.of(MobEffects.HUNGER, MobEffects.POISON));
+        /* 2 candles */ MOB_EFFECTS_PURIFICATOR.add(List.of(MobEffects.DARKNESS, MobEffects.BLINDNESS, MobEffects.CONFUSION));
+        /* 3 candles */ MOB_EFFECTS_PURIFICATOR.add(List.of(MobEffects.WEAKNESS, MobEffects.MOVEMENT_SLOWDOWN));
+        /* 4 candles */ MOB_EFFECTS_PURIFICATOR.add(List.of(MobEffects.WITHER, MobEffects.DIG_SLOWDOWN));
+        /* 5 candles */ MOB_EFFECTS_PURIFICATOR.add(List.of(MobEffects.LEVITATION));
+        /* 6 candles */ MOB_EFFECTS_PURIFICATOR.add(List.of(MobEffects.BAD_OMEN, MobEffects.RAID_OMEN, MobEffects.TRIAL_OMEN));
     }
 }

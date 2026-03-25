@@ -33,6 +33,15 @@ public class ExampleModNeoForgeClient {
         event.register((state, blockAndTintGetter, pos, tintIndex) ->
                         getFoliageColor(state, FrozenBonsaiBlock.TREE_TYPE, blockAndTintGetter, pos, tintIndex),
                 ExampleMod.FROZEN_BONSAI_BLOCK.get());
+
+        event.register((state, blockAndTintGetter, pos, tintIndex) -> {
+                    if (tintIndex != 0) return -1;
+                    if (blockAndTintGetter != null && pos != null) {
+                        return BiomeColors.getAverageFoliageColor(blockAndTintGetter, pos);
+                    }
+                    return FoliageColor.getDefaultColor();
+                },
+                ExampleMod.THORNED_VINE_BLOCK.get());
     }
 
     @SubscribeEvent
@@ -56,6 +65,12 @@ public class ExampleModNeoForgeClient {
                     return getItemFoliageColor(state.getValue(FrozenBonsaiBlock.TREE_TYPE));
                 },
                 ExampleMod.FROZEN_BONSAI_ITEM.get());
+
+        event.register((stack, tintIndex) -> {
+                    if (tintIndex != 0) return -1;
+                    return FoliageColor.getDefaultColor();
+                },
+                ExampleMod.THORNED_VINE_ITEM.get());
     }
 
     private static int getItemFoliageColor(int treeType) {

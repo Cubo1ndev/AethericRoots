@@ -10,5 +10,9 @@
   "item.aetheric_roots.ether_candle": "Ether Candle",
   "item.aetheric_roots.ether_sap": "Ether Sap",
   "item.aetheric_roots.ether_wax_ball": "Ether Wax Ball",
+  "block.aetheric_roots.thorned_vine": "Thorned Vine",
+  "item.aetheric_roots.thorned_vine": "Thorned Vine",
+  "death.attack.thorned_vine": "%1$s was pricked to death",
+  "death.attack.thorned_vine.player": "%1$s was pricked to death whilst trying to escape %2$s",
   "itemGroup.aetheric_roots": "Aetheric Roots"
 }

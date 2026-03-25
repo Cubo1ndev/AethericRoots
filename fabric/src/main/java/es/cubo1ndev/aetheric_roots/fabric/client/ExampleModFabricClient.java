@@ -22,6 +22,7 @@ public final class ExampleModFabricClient implements ClientModInitializer {
     public void onInitializeClient() {
         BlockRenderLayerMap.INSTANCE.putBlock(ExampleMod.BONSAI_BLOCK.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ExampleMod.FROZEN_BONSAI_BLOCK.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ExampleMod.THORNED_VINE_BLOCK.get(), RenderType.cutout());
 
         BlockEntityRenderers.register(ExampleMod.BONSAI_BLOCK_ENTITY.get(), BonsaiRenderer::new);
 
@@ -52,6 +53,21 @@ public final class ExampleModFabricClient implements ClientModInitializer {
                     return getItemFoliageColor(state.getValue(FrozenBonsaiBlock.TREE_TYPE));
                 },
                 ExampleMod.FROZEN_BONSAI_ITEM.get());
+
+        ColorProviderRegistry.BLOCK.register((state, blockAndTintGetter, pos, tintIndex) -> {
+                    if (tintIndex != 0) return -1;
+                    if (blockAndTintGetter != null && pos != null) {
+                        return BiomeColors.getAverageFoliageColor(blockAndTintGetter, pos);
+                    }
+                    return FoliageColor.getDefaultColor();
+                },
+                ExampleMod.THORNED_VINE_BLOCK.get());
+
+        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> {
+                    if (tintIndex != 0) return -1;
+                    return FoliageColor.getDefaultColor();
+                },
+                ExampleMod.THORNED_VINE_ITEM.get());
 
         ModItemProperties.register();
     }

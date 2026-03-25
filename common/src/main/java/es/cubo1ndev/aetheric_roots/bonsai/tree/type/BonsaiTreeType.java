@@ -18,11 +18,11 @@ public class BonsaiTreeType {
     public static final BonsaiTreeType OAK = register(1, Items.OAK_SAPLING, BonsaiTreeBehaviors.CROP, "crop");
     public static final BonsaiTreeType SPRUCE = register(2, Items.SPRUCE_SAPLING, BonsaiTreeBehaviors.MAGNET, "magnet"); // Item magnet. Candles = more radius.
     public static final BonsaiTreeType BIRCH = register(3, Items.BIRCH_SAPLING, BonsaiTreeBehaviors.PURIFICATOR, "purificator"); // Purificator, removes bad effects. Consumes candle. Candles = more radius + stronger bad effects.
-    public static final BonsaiTreeType JUNGLE = register(4, Items.JUNGLE_SAPLING, BonsaiTreeBehaviors.EMPTY, "empty"); // Fertilizer, make crops drop double. Consumes candle.
+    public static final BonsaiTreeType JUNGLE = register(4, Items.JUNGLE_SAPLING, BonsaiTreeBehaviors.THORN_AURA, "thorn_aura"); // Thorn Aura, spawns vines that expand. Players get damaged and slowed. Candles = more radius.
     public static final BonsaiTreeType ACACIA = register(5, Items.ACACIA_SAPLING, BonsaiTreeBehaviors.KNOCKBACK, "knockback"); // Knockback. Consumes candle. Candles = stronger knowback.
     public static final BonsaiTreeType DARK_OAK = register(6, Items.DARK_OAK_SAPLING, BonsaiTreeBehaviors.DARKNESS_XP, "darkness_xp"); // XP on dark areas. Candles = more xp.
     public static final BonsaiTreeType CHERRY = register(7, Items.CHERRY_SAPLING, BonsaiTreeBehaviors.PROTECTION, "protection");
-    public static final BonsaiTreeType MANGROVE = register(8, Items.MANGROVE_PROPAGULE, BonsaiTreeBehaviors.EMPTY, "empty"); // Bonsai growing slows down. Candles = slower.
+    public static final BonsaiTreeType MANGROVE = register(8, Items.MANGROVE_PROPAGULE, BonsaiTreeBehaviors.SLOWER_BONSAI_GROW, "slower_bonsai_grow"); // Bonsai growing slows down. Candles = slower.
     //public static final BonsaiTreeType CRIMSON = register(9, Items.CRIMSON_FUNGUS, BonsaiTreeBehaviors.EMPTY); // Gives strength. Candles = stronger effect.
     //public static final BonsaiTreeType WARPED = register(10, Items.WARPED_FUNGUS, BonsaiTreeBehaviors.EMPTY); // Teleports player when receiving damage to a "safe" zone. Consumes candle. Candle = faster teleport.
     //public static final BonsaiTreeType PALE_OAK = register(11, Items.PALE_OAK_SAPLING, BonsaiTreeBehaviors.EMPTY); // No spawning zone.
